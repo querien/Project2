@@ -5,17 +5,23 @@ const data = require("../public/ingredients.json");
 const ingredients = data.ingredients;
 
 router.get("/", (req, res, next) => {
-  res.render("pantry");
+  Ingredient.find({}).then((ingredients) => {
+    res.render("pantry", { ingredients });
+  });
 });
 
-router.post("/", (req, res, next) => {
+router.get("/add", (req, res, next) => {
+  res.render("pantry-add");
+});
+
+router.post("/add", (req, res, next) => {
   const { category, name, availability, amount } = req.body;
   Ingredient.create({
     category: category,
     name: name,
     availability: availability,
     amount: amount,
-  });
+  }).then(res.redirect("/pantry"));
 });
 
 router.get("/options", (req, res, next) => {
@@ -24,7 +30,7 @@ router.get("/options", (req, res, next) => {
 
 router.post("/options", (req, res, next) => {
   const { name } = req.body;
-  console.log(req.body);
+  console.log(name);
 });
 
 module.exports = router;
