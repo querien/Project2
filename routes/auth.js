@@ -90,7 +90,9 @@ router.get("/login", shouldNotBeLoggedIn, (req, res) => {
   res.render("auth/login");
 });
 
-router.post("/login", shouldNotBeLoggedIn, (req, res) => {
+
+router.post("/login", shouldNotBeLoggedIn, (req, res, next) => {
+
   const { username, password } = req.body;
 
   if (!username) {
@@ -106,15 +108,18 @@ router.post("/login", shouldNotBeLoggedIn, (req, res) => {
     });
   }
 
-  User.findOne({ username })
-    .then((user) => {
-      if (!user) {
-        return res
-          .status(400)
-          .render("login", { errorMessage: "Wrong credentials" });
-      }
 
-      bcrypt.compare(password, user.password).then((isSamePassword) => {
+  User.findOne({ username }).then((user) => {
+    if (!user) {
+      return res
+        .status(400)
+        .render("login", { errorMessage: "Wrong credentials" });
+    }
+
+    return bcrypt
+      .compare(password, user.password)
+      .then((isSamePassword) => {
+
         if (!isSamePassword) {
           return res
             .status(400)
@@ -123,15 +128,17 @@ router.post("/login", shouldNotBeLoggedIn, (req, res) => {
         req.session.user = user;
         // req.session.user = user._id ! better and safer but in this case we saving the entire user object
         return res.redirect("/");
+
+      })
+      .catch((err) => {
+        console.log(err);
+        // in this case we are sending the error handling to the error handling middleware that is defined in the error handling file
+        // you can just as easily run the res.status that is commented out below
+        next(err);
+        // return res.status(500).render("login", { errorMessage: err.message });
       });
-    })
-    .catch((err) => {
-      console.log(err);
-      // in this case we are sending the error handling to the error handling middleware that is defined in the error handling file
-      // you can just as easily run the res.status that is commented out below
-      next(err);
-      // return res.status(500).render("login", { errorMessage: err.message });
-    });
+  });
+
 });
 
 router.get("/logout", isLoggedIn, (req, res) => {
