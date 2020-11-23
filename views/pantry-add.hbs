@@ -1,0 +1,30 @@
+<h1>My Pantry</h1>
+
+<form action="/pantry/add" method="POST">
+  <p>
+    <label>Category</label>
+    <select name="category" id="category">
+      {{#each category}}
+      <option value={{category}}>{{category}}</option>
+      {{/each}}
+    </select>
+  </p>
+
+  <label for="name">Ingredient name</label>
+  <input type="text" name="name">
+
+  <p>
+    <label>Availability</label>
+    <select name="availability" id="availability">
+      <option value="I always have this ingredient">I always have this ingredient</option>
+      <option value="I sometimes have this ingredient">I sometimes have this ingredient</option>
+
+    </select>
+  </p>
+
+  <label for="amount">Amount</label>
+  <input type="number" name="amount" placeholder="Optional">
+
+  <button type="submit">Enter ingredient</button>
+
+</form>

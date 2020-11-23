@@ -45,7 +45,6 @@ router.post("/signup", shouldNotBeLoggedIn, (req, res) => {
   }
 
   */
-
   // Search the database for a user with the email submitted in the form
   User.findOne({ email }).then((found) => {
     if (found) {
