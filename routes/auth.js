@@ -19,12 +19,12 @@ router.get("/signup", shouldNotBeLoggedIn, (req, res) => {
 });
 
 router.post("/signup", shouldNotBeLoggedIn, (req, res) => {
-  const { username, password } = req.body;
+  const { email, password } = req.body;
 
-  if (!username) {
+  if (!email) {
     return res
       .status(400)
-      .render("signup", { errorMessage: "Please provide your username" });
+      .render("signup", { errorMessage: "Please provide your email" });
   }
 
   if (password.length < 8) {
@@ -45,20 +45,19 @@ router.post("/signup", shouldNotBeLoggedIn, (req, res) => {
   }
 
   */
-
-  // Search the database for a user with the username submitted in the form
-  User.findOne({ username }).then((found) => {
+  // Search the database for a user with the email submitted in the form
+  User.findOne({ email }).then((found) => {
     if (found) {
       return res
         .status(400)
-        .render("signup", { errorMessage: "Username already taken" });
+        .render("signup", { errorMessage: "email already taken" });
     }
     return bcrypt
       .genSalt(saltRounds)
       .then((salt) => bcrypt.hash(password, salt))
       .then((hashedPassword) => {
         return User.create({
-          username,
+          email,
           password: hashedPassword,
         });
       })
@@ -71,17 +70,17 @@ router.post("/signup", shouldNotBeLoggedIn, (req, res) => {
         if (error instanceof mongoose.Error.ValidationError) {
           return res
             .status(400)
-            .render("signup", { errorMessage: error.message });
+            .render("auth/signup", { errorMessage: error.message });
         }
         if (error.code === 11000) {
-          return res.status(400).render("signup", {
+          return res.status(400).render("auth/signup", {
             errorMessage:
-              "Username need to be unique. THe username you chose is already in used.",
+              "email need to be unique. THe email you chose is already in used.",
           });
         }
         return res
           .status(500)
-          .render("signup", { errorMessage: error.message });
+          .render("auth/signup", { errorMessage: error.message });
       });
   });
 });
@@ -90,55 +89,49 @@ router.get("/login", shouldNotBeLoggedIn, (req, res) => {
   res.render("auth/login");
 });
 
+router.post("/login", shouldNotBeLoggedIn, (req, res) => {
+  const { email, password } = req.body;
 
-router.post("/login", shouldNotBeLoggedIn, (req, res, next) => {
-
-  const { username, password } = req.body;
-
-  if (!username) {
+  if (!email) {
     return res
       .status(400)
-      .render("login", { errorMessage: "Please provide your username" });
+      .render("login", { errorMessage: "Please provide your email" });
   }
 
   //   * Here we use the same logic as above - either length based parameters or we check the strength of a password
   if (password.length < 8) {
-    return res.status(400).render("login", {
+    return res.status(400).render("auth/login", {
       errorMessage: "Your password needs to be at least 8 characters",
     });
   }
 
+  User.findOne({ email })
+    .then((user) => {
+      if (!user) {
+        return res
+          .status(400)
+          .render("auth/login", { errorMessage: "Wrong credentials" });
+      }
 
-  User.findOne({ username }).then((user) => {
-    if (!user) {
-      return res
-        .status(400)
-        .render("login", { errorMessage: "Wrong credentials" });
-    }
-
-    return bcrypt
-      .compare(password, user.password)
-      .then((isSamePassword) => {
-
-        if (!isSamePassword) {
-          return res
-            .status(400)
-            .render("login", { errorMessage: "Wrong credentials" });
-        }
-        req.session.user = user;
-        // req.session.user = user._id ! better and safer but in this case we saving the entire user object
-        return res.redirect("/");
-
-      })
-      .catch((err) => {
-        console.log(err);
-        // in this case we are sending the error handling to the error handling middleware that is defined in the error handling file
-        // you can just as easily run the res.status that is commented out below
-        next(err);
-        // return res.status(500).render("login", { errorMessage: err.message });
-      });
-  });
-
+      return bcrypt.compare(password, user.password);
+    })
+    .then((isSamePassword) => {
+      if (!isSamePassword) {
+        return res
+          .status(400)
+          .render("auth/login", { errorMessage: "Wrong credentials" });
+      }
+      req.session.user = email;
+      // req.session.user = user._id ! better and safer but in this case we saving the entire user object
+      return res.redirect("/profile");
+    })
+    .catch((err) => {
+      console.log(err);
+      // in this case we are sending the error handling to the error handling middleware that is defined in the error handling file
+      // you can just as easily run the res.status that is commented out below
+      next(err);
+      // return res.status(500).render("login", { errorMessage: err.message });
+    });
 });
 
 router.get("/logout", isLoggedIn, (req, res) => {

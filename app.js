@@ -27,7 +27,7 @@ const authRoutes = require("./routes/auth");
 app.use("/auth", authRoutes);
 
 const profileRoutes = require("./routes/profile");
-app.use("/profile", profileRoutes);
+app.use("/", profileRoutes);
 
 const pantryRoutes = require("./routes/pantry");
 app.use("/pantry", pantryRoutes);
