@@ -42,4 +42,13 @@ router.get("/:id", (req, res) => {
   });
 });
 
+router.get("/", (req, res) => {
+  if (!req.session.user) {
+    return res.redirect("/auth/login");
+  }
+  Recipe.find().then((recipes) => {
+    res.render("recipes-list", { recipes });
+  });
+});
+
 module.exports = router;
