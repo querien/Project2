@@ -23,7 +23,7 @@ router.post("/recipe", (req, res) => {
 
   Recipe.create({
     title: title,
-    ingredients: ingredients,
+    ingredients: ingredients.split(",").map((el) => el.trim()),
     description: description,
     duration: duration,
     dishes: dishes,

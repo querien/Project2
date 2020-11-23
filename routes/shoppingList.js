@@ -7,13 +7,16 @@ router.get("/shopping-list/:_id", (req, res, next) => {
   const id = req.params._id;
   console.log("this is the ID:" + id);
   Recipe.findById(id).then((recipe) => {
-    const inStockArr = recipe.ingredients;
-    inStockArr.forEach((element) => {
-      Ingredients.find({ name: element }).then((result) => {
-        console.log(result);
-      });
+    const recipeIngredients = recipe.ingredients;
+    Ingredients.find().then((ingredients) => {
+      const pantryIngredients = ingredients.map(
+        (ingredient) => ingredient.name
+      );
+      const shoppingList = recipeIngredients.filter(
+        (ingredient) => !pantryIngredients.includes(ingredient)
+      );
+      res.render("shopping-list", { ingredients: shoppingList });
     });
-    res.render("shopping-list", { recipe });
   });
 });
 
