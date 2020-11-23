@@ -36,7 +36,7 @@ const recipesRoutes = require("./routes/recipes");
 app.use("/recipes", recipesRoutes);
 
 const shoppingListRoutes = require("./routes/shoppingList");
-app.use("/shopping-list", shoppingListRoutes);
+app.use("/", shoppingListRoutes);
 
 // ❗ To handle errors. Routes that dont exist or errors that you handle in specfic routes
 require("./error-handling")(app);
