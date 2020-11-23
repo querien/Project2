@@ -90,7 +90,9 @@ router.get("/login", shouldNotBeLoggedIn, (req, res) => {
   res.render("auth/login");
 });
 
+
 router.post("/login", shouldNotBeLoggedIn, (req, res, next) => {
+
   const { username, password } = req.body;
 
   if (!username) {
@@ -106,6 +108,7 @@ router.post("/login", shouldNotBeLoggedIn, (req, res, next) => {
     });
   }
 
+
   User.findOne({ username }).then((user) => {
     if (!user) {
       return res
@@ -116,6 +119,7 @@ router.post("/login", shouldNotBeLoggedIn, (req, res, next) => {
     return bcrypt
       .compare(password, user.password)
       .then((isSamePassword) => {
+
         if (!isSamePassword) {
           return res
             .status(400)
@@ -124,6 +128,7 @@ router.post("/login", shouldNotBeLoggedIn, (req, res, next) => {
         req.session.user = user;
         // req.session.user = user._id ! better and safer but in this case we saving the entire user object
         return res.redirect("/");
+
       })
       .catch((err) => {
         console.log(err);
@@ -133,6 +138,7 @@ router.post("/login", shouldNotBeLoggedIn, (req, res, next) => {
         // return res.status(500).render("login", { errorMessage: err.message });
       });
   });
+
 });
 
 router.get("/logout", isLoggedIn, (req, res) => {
