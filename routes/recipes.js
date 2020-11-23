@@ -17,7 +17,7 @@ router.post("/recipe", (req, res) => {
     ingredients,
     description,
     duration,
-    dish,
+    dishes,
     servings,
   } = req.body;
 
@@ -26,7 +26,7 @@ router.post("/recipe", (req, res) => {
     ingredients: ingredients,
     description: description,
     duration: duration,
-    dish: dish,
+    dishes: dishes,
     servings: servings,
   }).then((createdRecipe) => {
     console.log("createdRecipe", createdRecipe);

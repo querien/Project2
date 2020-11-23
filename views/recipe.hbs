@@ -1,2 +1,13 @@
-<h1>This is your recipe</h1>
-{{recipe.title}}
+<h1>{{recipe.title}}</h1>
+<h3>Ingredients</h3>
+<p>{{recipe.ingredients}}
+<p>
+<h3>How to make:</h3>
+<p>{{recipe.description}}</p>
+
+<p>{{recipe.duration}}min</p>
+
+<p>{{recipe.dishes}}</p>
+<p>Serves up to {{recipe.servings}} portions</p>
+
+<button><a href="/shopping-list">Create your shopping list</a></button>
