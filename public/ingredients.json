@@ -1,0 +1,103 @@
+{
+	"ingredients": [{
+			"category": "Oils and vinegar",
+			"name": "Extra-virgin olive oil"
+		},
+		{
+			"category": "Oils and vinegar",
+			"name": "Coconut oil"
+		},
+		{
+			"category": "Oils and vinegar",
+			"name": "red-wine vinegar"
+		},
+
+		{
+			"category": "Oils and vinegar",
+			"name": "White-wine vinegar"
+		},
+
+		{
+			"category": "Oils and vinegar",
+			"name": "Balsamic vinegar"
+		},
+
+		{
+			"category": "Herbs and spices",
+			"name": "Salt"
+		},
+
+		{
+			"category": "Herbs and spices",
+			"name": "Black peppercorns"
+		},
+
+
+		{
+			"category": "Herbs and spices",
+			"name": "Cinnamon"
+		},
+
+		{
+			"category": "Herbs and spices",
+			"name": "Cumin"
+		},
+
+		{
+			"category": "Herbs and spices",
+			"name": "Ground corianderseeds"
+		},
+
+		{
+			"category": "Herbs and spices",
+			"name": "Five-spice powder"
+		},
+
+	{
+			"category": "Herbs and spices",
+			"name": "Oregano"
+		},
+
+		{
+			"category": "Herbs and spices",
+			"name": "Tumeric"
+		},	
+		
+		{
+			"category": "Herbs and spices",
+			"name": "Paprika"
+		},
+
+		{
+			"category": "Herbs and spices",
+			"name": "Bay leaves"
+		},
+		{
+			"category": "Herbs and spices",
+			"name": "Curry powder"
+		},
+
+		{
+			"category": "Herbs and spices",
+			"name": "Cloves"
+		},
+
+		{
+			"category": "Herbs and spices",
+			"name": "Star anise"
+		},
+
+		{
+			"category": "Herbs and spices",
+			"name": "Garlic powder"
+		},
+
+		{
+			"category": "Herbs and spices",
+			"name": "Chili flakes"
+		}
+
+
+	]
+}
+
