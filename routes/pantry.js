@@ -4,6 +4,7 @@ const User = require("../models/User.model");
 const Ingredient = require("../models/Ingredient.model");
 const router = require("express").Router();
 const data = require("../public/ingredients.json");
+const { findByIdAndUpdate } = require("../models/User.model");
 const ingredients = data.ingredients;
 
 router.get("/", (req, res) => {
@@ -18,8 +19,42 @@ router.get("/", (req, res) => {
     });
 });
 
-//   Ingredient.find({}).then((ingredients) => {
-//     res.render("pantry", { ingredients });
+router.post("/remove", (req, res) => {
+  const id = req.body.removeIngredient;
+  console.log(id);
+  Ingredient.findByIdAndDelete(id).then((removeIngredient) => {
+    console.log("removed ingredient", removeIngredient);
+    res.redirect("/pantry");
+  });
+});
+
+router.post("/edit", (req, res) => {
+  const id = req.body.editIngredient;
+  Ingredient.findById(id)
+    .then((foundIngredient) => {
+      console.log(("Found this", foundIngredient));
+      res.render("pantry-edit", { foundIngredient });
+    })
+    .then(() => {
+      const { name, amount, availability, category } = req.body;
+      findByIdAndUpdate(id, {
+        name: name,
+        category: category,
+        availability: availability,
+        amount: amount,
+      });
+    });
+});
+
+// Ingredient.findByIdAndDelete(id).then((removedIngredient) => {
+//   console.log("removed ingredient", removedIngredient);
+//   res.redirect("/pantry");
+// });
+
+// router.post("/delete-ingredient/:id", (req, res) => {
+//   Ingredient.findByIdAndDelete(req.params.id).then((removedIngredient) => {
+//     console.log("removed ingredient", removedIngredient);
+//     res.redirect("/pantry");
 //   });
 // });
 
@@ -63,13 +98,6 @@ function prepareForFrontend(ingredients) {
 //   "Canned goods",
 //   "Produce",
 // ]};
-
-router.post("/delete-ingredient/:id", (req, res) => {
-  Ingredient.findByIdAndDelete(req.params.id).then((removedIngredient) => {
-    console.log("removed ingredient", removedIngredient);
-    res.redirect("/pantry");
-  });
-});
 
 router.get("/add", (req, res, next) => {
   res.render("pantry-add");
