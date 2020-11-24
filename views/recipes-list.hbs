@@ -7,8 +7,9 @@
 
     {{#each recipes}}
     <li>
-        <h1>{{title}}</h1>
-        <h4>Description:</h4>
+        <a href="/recipes/{{_id}}">
+            <h1>{{title}}</h1>
+        </a>
         <p>{{description}}</p>
     </li>
 
