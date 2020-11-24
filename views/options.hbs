@@ -1,9 +1,9 @@
 <form method="post" action="/pantry/options">
 
   <fieldset>
-    <legend>Add ingredients {{this.category}}</legend>
+    <legend>Add ingredients</legend>
     {{#each ingredients}}
-    <input type="checkbox" name={{name}} value={{name}}>{{name}}<br>
+    <input type="checkbox" name="option" value="{{name}}">{{name}}<br>
     <br>
     {{/each}}
     <input type="submit" value="Submit now" />

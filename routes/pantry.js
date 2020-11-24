@@ -29,8 +29,16 @@ router.get("/options", (req, res, next) => {
 });
 
 router.post("/options", (req, res, next) => {
-  const { name } = req.body;
-  console.log(name);
+  const { option } = req.body;
+  console.log(option);
+  option.forEach((element) => {
+    Ingredient.create({
+      category: "to be determined",
+      name: element,
+      amount: 1,
+    });
+  });
+  res.redirect("/pantry");
 });
 
 module.exports = router;
