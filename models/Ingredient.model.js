@@ -1,4 +1,5 @@
 const { Schema, model } = require("mongoose");
+const mongoose = require("mongoose");
 
 const ingredientSchema = new Schema({
   category: String,
@@ -9,13 +10,16 @@ const ingredientSchema = new Schema({
 
   availability: {
     type: String,
-    enum: [
-      "I always have this ingredient",
-      "Most of the time I have this ingredient",
-    ],
+    enum: ["I always have this ingredient", "I sometimes have this ingredient"],
     default: "I always have this ingredient",
   },
   amount: Number,
+  author: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
+    },
+  ],
 });
 
 const Ingredient = model("Ingredient", ingredientSchema);

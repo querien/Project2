@@ -10,11 +10,18 @@ router.get("/", (req, res) => {
   if (!req.session.user) {
     return res.redirect("/auth/login");
   }
-
-  Ingredient.find({}).then((ingredients) => {
-    res.render("pantry", { ingredients });
-  });
+  User.findById(req.session.user._id)
+    .populate("pantry")
+    .then((data) => {
+      const { pantry } = data;
+      res.render("pantry", { pantry });
+    });
 });
+
+//   Ingredient.find({}).then((ingredients) => {
+//     res.render("pantry", { ingredients });
+//   });
+// });
 
 function prepareForFrontend(ingredients) {
   return ingredients.reduce((acc, v) => {
@@ -68,7 +75,18 @@ router.post("/add", (req, res, next) => {
     name: name,
     availability: availability,
     amount: amount,
-  }).then(res.redirect("/pantry"));
+  }).then((addedIngredient) => {
+    User.findByIdAndUpdate(
+      req.session.user._id,
+      {
+        $addToSet: { pantry: addedIngredient._id },
+      },
+      { new: true }
+    ).then((newPantry) => {
+      console.log("newPantry:", newPantry);
+      res.redirect("/pantry");
+    });
+  });
 });
 
 router.get("/options", (req, res, next) => {
@@ -83,9 +101,19 @@ router.post("/options", (req, res, next) => {
       category: "to be determined",
       name: element,
       amount: 1,
+    }).then((addedIngredient) => {
+      User.findByIdAndUpdate(
+        req.session.user._id,
+        {
+          $addToSet: { pantry: addedIngredient._id },
+        },
+        { new: true }
+      ).then((newPantry) => {
+        console.log("newPantry:", newPantry);
+      });
+      res.redirect("/pantry");
     });
   });
-  res.redirect("/pantry");
 });
 
 module.exports = router;

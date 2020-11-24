@@ -1,4 +1,6 @@
 const Recipe = require("../models/Recipe.model");
+const User = require("../models/User.model");
+
 const router = require("express").Router();
 
 router.get("/new-recipe", (req, res) => {
@@ -31,6 +33,15 @@ router.post("/recipe", (req, res) => {
     dishes: dishes,
     servings: servings,
   }).then((createdRecipe) => {
+    User.findByIdAndUpdate(
+      req.session.user._id,
+      {
+        $addToSet: { recipes: createdRecipe._id },
+      },
+      { new: true }
+    ).then(() => {
+      console.log("it was added");
+    });
     console.log("createdRecipe", createdRecipe);
     //send to the database
     res.redirect(`/recipes/${createdRecipe._id}`);

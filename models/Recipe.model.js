@@ -1,3 +1,4 @@
+const mongoose = require("mongoose");
 const { Schema, model } = require("mongoose");
 
 const recipeSchema = new Schema({
@@ -23,6 +24,12 @@ const recipeSchema = new Schema({
     enum: ["dinner", "lunch", "breakfast", "dessert"],
   },
   servings: Number,
+  author: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
+    },
+  ],
 });
 
 const Recipe = model("Recipe", recipeSchema);
