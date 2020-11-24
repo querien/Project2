@@ -16,6 +16,7 @@ router.post("/recipe", (req, res) => {
     title,
     ingredients,
     description,
+    directions,
     duration,
     dishes,
     servings,
@@ -23,8 +24,9 @@ router.post("/recipe", (req, res) => {
 
   Recipe.create({
     title: title,
-    ingredients: ingredients.split(",").map((el) => el.trim()),
     description: description,
+    ingredients: ingredients.split(",").map((el) => el.trim()),
+    directions: directions,
     duration: duration,
     dishes: dishes,
     servings: servings,
