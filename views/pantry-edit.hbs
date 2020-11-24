@@ -1,28 +1,31 @@
 <h1>Edit Ingredient </h1>
 
 
-<h3>Editing {{foundIngredient.name}}</h3>
-<h3>The current amount is {{foundIngredient.amount}}</h3>
+<h3>Editing {{ingredient.name}}</h3>
+<h3>The current amount is {{ingredient.amount}}</h3>
 
-<form action="/pantry/edit" method="POST">
+<form action="/pantry/edit/{{ingredient._id}}" method="POST">
   <p>
     <label>Category</label>
-    <input type="text" name="category" placeholder="enter category">
+    <input type="text" name="category" placeholder="enter category" value="{{ingredient.category}}">
   </p>
 
   <label for="name">Ingredient name</label>
-  <input type="text" name="name">
+  <input type="text" name="name" value="{{ingredient.name}}">
 
   <p>
     <label>Availability</label>
     <select name="availability" id="availability">
-      <option value="I always have this ingredient">I always have this ingredient</option>
-      <option value="I sometimes have this ingredient">I sometimes have this ingredient</option>
+      <option value="I always have this ingredient"
+        {{selected "I always have this ingredient" ingredient.availability}}>I always have this ingredient</option>
+      <option value="I sometimes have this ingredient"
+        {{selected "I sometimes have this ingredient" ingredient.availability}}>I sometimes have this ingredient
+      </option>
     </select>
   </p>
 
   <label for="amount">Amount</label>
-  <input type="number" min="1" name="amount" placeholder="Optional">
+  <input type="number" min="1" name="amount" placeholder="Optional" value="{{ingredient.amount}}">
 
   <button type="submit">Enter ingredient</button>
 
