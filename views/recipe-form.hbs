@@ -16,7 +16,7 @@
     <textarea name="directions" id="directions" cols="30" rows="10"></textarea><br>
 
     <label for="duration">Duration</label>
-    <input type="text" name="duration" id="duration" placeholder="min"><br>
+    <input type="text" name="duration" id="duration" placeholder="30min"><br>
 
     <label for="dishes">Dish type</label>
     <select id="dishes" name="dishes">
@@ -27,6 +27,6 @@
     </select><br>
 
     <label for="servings">Serving size</label>
-    <input type="number" name="servings" id="servings"><br>
+    <input type="number" min="1" name="servings" id="servings"><br>
     <button type="submit">Submit</button>
 </form>
