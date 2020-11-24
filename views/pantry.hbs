@@ -1,7 +1,10 @@
 <h1>My pantry</h1>
 
 {{#each ingredients}}
-<p>{{name}}: {{amount}} </p>
+<p>{{name}}: {{amount}}</p>
+<form action="/pantry/delete-ingredient/{{_id}}" method="POST">
+    <button type="submit">Remove</button>
+</form>
 
 {{/each}}
 

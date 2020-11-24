@@ -57,6 +57,13 @@ function prepareForFrontend(ingredients) {
 //   "Produce",
 // ]};
 
+router.post("/delete-ingredient/:id", (req, res) => {
+  Ingredient.findByIdAndDelete(req.params.id).then((removedIngredient) => {
+    console.log("removed ingredient", removedIngredient);
+    res.redirect("/pantry");
+  });
+});
+
 router.get("/add", (req, res, next) => {
   res.render("pantry-add");
 });
