@@ -11,13 +11,16 @@
     <input type="text" placeholder="Search recipes...">
     <button>Search</button>
 </form>
-{{#each recipes}}
 <ul id="recipes-list">
+
+    {{#each recipes}}
     <li>
         <h1>{{title}}</h1>
         <h4>Description:</h4>
         <p>{{description}}</p>
     </li>
+
+    {{/each}}
+
 </ul>
 
-{{/each}}
