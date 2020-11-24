@@ -75,7 +75,7 @@ router.post("/signup", shouldNotBeLoggedIn, (req, res) => {
         if (error.code === 11000) {
           return res.status(400).render("auth/signup", {
             errorMessage:
-              "email need to be unique. THe email you chose is already in used.",
+              "Email need to be unique. The email you chose is already in use.",
           });
         }
         return res

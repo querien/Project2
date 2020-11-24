@@ -32,7 +32,6 @@
 			"name": "Black peppercorns"
 		},
 
-
 		{
 			"category": "Herbs and spices",
 			"name": "Cinnamon"
@@ -95,7 +94,193 @@
 		{
 			"category": "Herbs and spices",
 			"name": "Chili flakes"
+		},
+
+		{
+			"category": "Condiments and sauces",
+			"name": "Mustard"
+		},
+		{
+			"category": "Condiments",
+			"name": "Mayonaise"
+		},
+		{
+			"category": "Condiments",
+			"name": "Ketchup"
+		},
+		{
+			"category": "Condiments",
+			"name": "Hot sauce"
+		},
+
+		{
+			"category": "Condiments",
+			"name": 
+			"Hoisin sauce"
+		},
+
+		{
+			"category": "Condiments",
+			"name": "Soy sauce"
+		},
+		{
+			"category": "Condiments",
+			"name": "Fish sauce"
+		},
+
+		{
+			"category": "Condiments",
+			"name": "Harissa"
+		},
+		{
+			"category": "Condiments",
+			"name": "Thai red curry paste"
+		},
+		{
+			"category": "Condiments",
+			"name": "Worcestershire sauce"
+		},
+		{
+			"category": "Sweeteners",
+			"name":"Honey"
+		},
+	
+		{
+			"category": "Sweeteners",
+			"name":"Maple syrup"
+		},	
+		{
+			"category": "Sweeteners",
+			"name":"Granulated sugar"
+		},	
+		{
+			"category": "Sweeteners",
+			"name":"Agave syrup"
+		},
+
+		{
+			"category": "Sweeteners",
+			"name":"Brown sugar"
+		},
+
+		{
+			"category": "Grains and starches",
+			"name":	"Rigatoni"
+		},
+
+		{
+			"category": "Grains and starches",
+			"name":"Spaghetti"
+		},
+		{
+			"category": "Grains and starches",
+			"name": "Couscous"
+		},
+
+		{
+			"category": "Grains and starches",
+			"name": "Maccheroni"
+		},
+
+		{
+			"category": "Grains and starches",
+			"name": "Fussili"
+		},
+		{
+			"category": "Grains and starches",
+			"name":"Tagliatelle"
+		},
+	
+		{
+			"category": "Grains and starches",
+			"name":"Farro"
+		},
+		{
+			"category": "Grains and starches",
+			"name":"Quinoa"
+		},
+		{
+			"category": "Grains and starches",
+			"name":"Bulgur"
+		},
+		{
+			"category": "Grains and starches",
+			"name":"Arborio rice"
+		},
+		{
+			"category": "Grains and starches",
+			"name":"Sushi rice"
+		},
+		{
+			"category": "Grains and starches",
+			"name":"Pandan rice"
+		},
+		{
+			"category": "Grains and starches",
+			"name":"Basmati rice"
+		},
+		{
+			"category": "Beans (dry or canned)",
+			"name":"Cannelini beans" 
+		},
+		{
+			"category": "Beans (dry or canned)",
+			"name":		"Lentils"
+		},
+		{
+			"category": "Beans (dry or canned)",
+			"name":	"Black beans"
+		},
+		{
+			"category": "Beans (dry or canned)",
+			"name":		"Black-eyed peas"
+		},
+		{
+			"category": "Beans (dry or canned)",
+			"name" :"Chickpeas"
+		},
+		{
+			"category": "Beans (dry or canned)",
+			"name" :"Kidney beans"
+		},
+
+		{
+			"category": "Beans (dry or canned)",
+			"name" :"Green peas"
+		},
+		{
+			"category": "Beans (dry or canned)",
+			"name" :"Green peas"
+		},
+
+		{
+			"category":"Canned foods",
+			"name" :"Sardines"
+		},
+		{
+			"category":"Canned foods",
+			"name" :"Jackfruit"
+		},
+		{
+			"category":"Canned foods",
+			"name" :	"Coconut milk"
+			
+		},
+		{
+			"category":"Canned foods",
+			"name" :"Corn"
+		
+		},
+		{
+			"category":"Canned foods",
+			"name" :"Canned tomatoes"
+
+		},	
+		{
+			"category":"Canned foods",
+			"name" :	"Canned tuna"
 		}
+
 	]
 }
 
