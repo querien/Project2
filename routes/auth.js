@@ -24,11 +24,11 @@ router.post("/signup", shouldNotBeLoggedIn, (req, res) => {
   if (!email) {
     return res
       .status(400)
-      .render("signup", { errorMessage: "Please provide your email" });
+      .render("auth/signup", { errorMessage: "Please provide your email" });
   }
 
   if (password.length < 8) {
-    return res.status(400).render("signup", {
+    return res.status(400).render("auth/signup", {
       errorMessage: "Your password needs to be at least 8 characters",
     });
   }
@@ -50,7 +50,7 @@ router.post("/signup", shouldNotBeLoggedIn, (req, res) => {
     if (found) {
       return res
         .status(400)
-        .render("signup", { errorMessage: "email already taken" });
+        .render("auth/signup", { errorMessage: "email already taken" });
     }
     return bcrypt
       .genSalt(saltRounds)

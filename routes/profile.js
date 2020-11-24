@@ -42,4 +42,12 @@ router.post("/update-password", (req, res) => {
   });
 });
 
+router.post("/delete-profile", (req, res) => {
+  User.findByIdAndDelete(req.session.user._id).then((removedUser) => {
+    console.log(removedUser);
+    req.session.user = null;
+    res.redirect("/auth/signup");
+  });
+});
+
 module.exports = router;
