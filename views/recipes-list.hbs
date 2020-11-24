@@ -1,10 +1,15 @@
 <h1>recipes list</h1>
+<form id="search-recipes">
+    <input type="text" placeholder="Search recipes...">
+    <button>Search</button>
+</form>
 {{#each recipes}}
-<h1>{{title}}</h1>
-<h4>Ingredients: {{ingredients}}</h4>
+<ul id="recipes-list">
+    <li>
+        <h1>{{title}}</h1>
+        <h4>Description:</h4>
+        <p>{{description}}</p>
+    </li>
+</ul>
 
 {{/each}}
-<form action="/recipes">
-    <input type="text" name="search">
-    <button type="submit">Search</button>
-</form>
