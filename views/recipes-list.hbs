@@ -1,6 +1,8 @@
 <h1>recipes list</h1>
 {{#each recipes}}
 <h1>{{title}}</h1>
+<h4>Ingredients: {{ingredients}}</h4>
+
 {{/each}}
 <form action="/recipes">
     <input type="text" name="search">
