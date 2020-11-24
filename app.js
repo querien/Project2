@@ -41,4 +41,12 @@ app.use("/", shoppingListRoutes);
 // ❗ To handle errors. Routes that dont exist or errors that you handle in specfic routes
 require("./error-handling")(app);
 
+hbs.handlebars.registerHelper("selected", function (option, value) {
+  if (option === value) {
+    return " selected";
+  } else {
+    return "";
+  }
+});
+
 module.exports = app;

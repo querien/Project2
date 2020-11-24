@@ -1,0 +1,32 @@
+<h1>Edit your recipe</h1>
+<form action="/recipes/edit/{{recipe._id}}" method="POST">
+    <label for="title">Title</label>
+    <input type="text" name="title" value="{{recipe.title}}"><br>
+
+
+    <label for="description">Description:</label><br>
+    <textarea name="description" id="description" cols="50" rows="4">{{recipe.description}}</textarea><br>
+
+    <label for="ingredients">Please, fill in your ingredients separated by a comma:</label><br>
+
+    <textarea id="ingredients" name="ingredients" rows="4" cols="50">{{recipe.ingredients}}
+    </textarea><br>
+
+    <label for="directions">Directions:</label><br>
+    <textarea name="directions" id="directions" cols="30" rows="10">{{recipe.directions}}</textarea><br>
+
+    <label for="duration">Duration</label>
+    <input type="text" name="duration" id="duration" placeholder="30min" value="{{recipe.duration}}"><br>
+
+    <label for="dishes">Dish type</label>
+    <select id="dishes" name="dishes">
+        <option value="breakfast" {{selected "breakfast" recipe.dishes}}>Breakfast</option>
+        <option value="lunch" {{selected "lunch" recipe.dishes}}>Lunch</option>
+        <option value="dinner" {{selected "dinner" recipe.dishes}}>Dinner</option>
+        <option value="dessert" {{selected "dessert" recipe.dishes}}>Dessert</option>
+    </select><br>
+
+    <label for="servings">Serving size</label>
+    <input type="number" min="1" name="servings" id="servings" value="{{recipe.servings}}"><br>
+    <button type="submit">Submit</button>
+</form>
