@@ -4,15 +4,14 @@
   <p>
     <label>Category</label>
     <select name="category" id="category">
-      {{#each category}}
-      <option value={{category}}>{{category}}</option>
+      {{#each categories}}
+      <option value={{categories}}>{{categories}}</option>
       {{/each}}
     </select>
   </p>
 
   <label for="name">Ingredient name</label>
   <input type="text" name="name">
-
   <p>
     <label>Availability</label>
     <select name="availability" id="availability">

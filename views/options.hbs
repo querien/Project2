@@ -1,11 +1,45 @@
 <form method="post" action="/pantry/options">
-
+  <legend>Add ingredients</legend>
   <fieldset>
-    <legend>Add ingredients</legend>
-    {{#each ingredients}}
-    <input type="checkbox" name="option" value="{{name}}">{{name}}<br>
-    <br>
+    <h1>Oil and vinegar</h1>
+
+    {{#each oils}}
+    <input type="checkbox" name="option" value="{{this}}">{{this}}<br>
     {{/each}}
-    <input type="submit" value="Submit now" />
+
+    <h1>Herbs and spices</h1>
+    {{#each herbs}}
+    <input type="checkbox" name="option" value="{{this}}">{{this}}<br>
+    {{/each}}
+
+    <h1>Condiments</h1>
+    {{#each condiments}}
+    <input type="checkbox" name="option" value="{{this}}">{{this}}<br>
+    {{/each}}
+
+    <h1>Sweeteners</h1>
+    {{#each sweeteners}}
+    <input type="checkbox" name="option" value="{{this}}">{{this}}<br>
+    {{/each}}
+
+
+    <h1>Grains and starches</h1>
+    {{#each grains}}
+    <input type="checkbox" name="option" value="{{this}}">{{this}}<br>
+    {{/each}}
+
+    <h1>Beans (dry or canned)</h1>
+    {{#each beans}}
+    <input type="checkbox" name="option" value="{{this}}">{{this}}<br>
+    {{/each}}
+
+    <h1>Canned foods</h1>
+    {{#each canned}}
+    <input type="checkbox" name="option" value="{{this}}">{{this}}<br>
+    {{/each}}
+
   </fieldset>
+
+  <input type="submit" value="Submit now" />
+
 </form>

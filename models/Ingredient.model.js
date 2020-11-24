@@ -2,7 +2,11 @@ const { Schema, model } = require("mongoose");
 
 const ingredientSchema = new Schema({
   category: String,
-  name: String,
+  name: {
+    type: String,
+    unique: true,
+  },
+
   availability: {
     type: String,
     enum: [
