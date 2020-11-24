@@ -15,3 +15,9 @@
 <p>Serves up to {{recipe.servings}} portions</p>
 
 <a href="/shopping-list/{{recipe._id}}">Create your shopping list</a>
+
+<form action="/recipes/delete-recipe/{{recipe._id}}" method="POST">
+    <button type="submit">Delete this recipe</button>
+</form>
+
+<a href="/recipes/edit-recipe/{{recipe._id}}">Edit</a>
