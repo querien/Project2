@@ -13,7 +13,7 @@ searchBar.addEventListener("keyup", (e) => {
     } else {
       recipe.style.display = "none";
     }
-    // const text = recipe.querySelector("#ingredients");
+    // const text = recipe.lastElementChild.textContent;
     // if (text.toLowerCase().indexOf(term) !== -1) {
     //   recipe.style.display = "block";
     // } else {
