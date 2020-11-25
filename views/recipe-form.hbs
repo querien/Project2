@@ -1,5 +1,5 @@
 <h1>Add your recipe</h1>
-<form action="/recipes/recipe" method="POST">
+<form action="/recipes/recipe" method="POST" enctype="multipart/form-data">
     <label for="title">Title</label>
     <input type="text" name="title"><br>
 
@@ -28,5 +28,7 @@
 
     <label for="servings">Serving size</label>
     <input type="number" min="1" name="servings" id="servings"><br>
+    <label for="images">Upload an image</label>
+    <input type="file" name="imageUrl" accept="image/png, image/jpg"><br>
     <button type="submit">Submit</button>
 </form>

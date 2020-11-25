@@ -1,7 +1,7 @@
 const Recipe = require("../models/Recipe.model");
 const User = require("../models/User.model");
-
 const router = require("express").Router();
+const uploader = require("../config/cloudinary.config.js");
 
 router.get("/new-recipe", (req, res) => {
   if (!req.session.user) {
@@ -10,7 +10,7 @@ router.get("/new-recipe", (req, res) => {
   res.render("recipe-form");
 });
 
-router.post("/recipe", (req, res) => {
+router.post("/recipe", uploader.single("imageUrl"), (req, res) => {
   if (!req.session.user) {
     return res.redirect("/auth/login");
   }
@@ -22,8 +22,10 @@ router.post("/recipe", (req, res) => {
     duration,
     dishes,
     servings,
+    images,
   } = req.body;
-
+  console.log(req.file);
+  console.log(req.body);
   Recipe.create({
     title: title,
     description: description,
@@ -32,25 +34,23 @@ router.post("/recipe", (req, res) => {
     duration: duration,
     dishes: dishes,
     servings: servings,
+    images: (req.file && req.file.path) || "",
+    author: [req.session.user._id],
   }).then((createdRecipe) => {
+    console.log("RECEIPE CREATED");
     User.findByIdAndUpdate(
       req.session.user._id,
       {
         $addToSet: { recipes: createdRecipe._id },
       },
       { new: true }
-    ).then(() => {
-      console.log("it was added");
-    });
-    console.log("createdRecipe", createdRecipe);
-    //send to the database
+    ).then(() => {});
     res.redirect(`/recipes/${createdRecipe._id}`);
   });
 });
 
 router.post("/delete-recipe/:id", (req, res) => {
   Recipe.findByIdAndDelete(req.params.id).then((removedRecipe) => {
-    console.log("removed recipe", removedRecipe);
     res.redirect("/recipes");
   });
 });
@@ -86,7 +86,6 @@ router.post("/edit/:id", (req, res) => {
 });
 
 router.get("/:id", (req, res) => {
-  console.log(req.params.id);
   Recipe.findById(req.params.id).then((recipe) => {
     res.render("recipe", { recipe });
   });
@@ -96,16 +95,15 @@ router.get("/", (req, res) => {
   if (!req.session.user) {
     return res.redirect("/auth/login");
   }
-  User.findById(req.session.user._id)
-    .populate("recipes")
-    .then((data) => {
-      console.log(data);
-      const { recipes } = data;
-      res.render("recipes-list", { recipes });
-    });
-  // Recipe.find().then((recipes) => {
-  //   res.render("recipes-list", { recipes });
-  // });
+  const { search = "" } = req.query;
+  Recipe.find({
+    $and: [
+      { author: { $in: req.session.user._id } },
+      { title: { $regex: new RegExp(search), $options: "i" } },
+    ],
+  }).then((recipes) => {
+    res.render("recipes-list", { recipes });
+  });
 });
 
 module.exports = router;
