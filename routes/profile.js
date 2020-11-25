@@ -2,24 +2,13 @@ const router = require("express").Router();
 const bcrypt = require("bcryptjs");
 const User = require("../models/User.model");
 
-const categories = [
-  "Oils and vinegar",
-  "Herbs and spices",
-  "Condiments",
-  "Sweeteners",
-  "Grains and starches",
-  "Beans",
-  "Canned goods",
-  "Produce",
-];
-
 router.get("/profile", (req, res) => {
   if (!req.session.user) {
     return res.redirect("/auth/login");
   }
   User.findById(req.session.user._id).then((myUser) => {
-    console.log("myUser:", myUser);
-    res.render("profile");
+    console.log("myUser:", myUser.email);
+    res.render("profile", { myUser });
   });
 });
 

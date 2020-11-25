@@ -3,11 +3,7 @@
 <form action="/pantry/add" method="POST">
   <p>
     <label>Category</label>
-    <select name="category" id="category">
-      {{#each categories}}
-      <option value={{categories}}>{{categories}}</option>
-      {{/each}}
-    </select>
+    <input type="text" name="category" id="category">
   </p>
 
   <label for="name">Ingredient name</label>

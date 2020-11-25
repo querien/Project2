@@ -7,20 +7,19 @@
    <meta http-equiv="X-UA-Compatible" content="ie=edge">
    <title>{{title}}</title>
    <link rel="stylesheet" href="/stylesheets/style.css" />
-   <link rel="stylesheet" href="/stylesheets/stylequerien.css" />
-
 </head>
-<style>
-   @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&family=Source+Serif+Pro:wght@400;600;700&display=swap');
-</style>
 
 <body>
-   <nav class="navbar">
+   <nav>
       <ul>
-         <li><a href="/">Home</a></li>
-         <li><a href="/recipes">My recipes</a></li>
-         <li><a href="/pantry">My pantry</a></li>
-         <li><a href="/profile">My profile</a></li>
+         <li class="anchor"><a href="/">Home</a></li>
+         <li class="anchor"><a href="/recipes">My recipes</a></li>
+         <li class="anchor"><a href="/pantry">My pantry</a></li>
+         <li class="anchor"><a href="/profile">My profile</a></li>
+
+         {{#if email}}
+         <li class="anchor"><a href="/profile"></a>You are logged in as {{email}}</li>
+         {{/if}}
       </ul>
    </nav>
 

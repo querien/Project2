@@ -14,9 +14,10 @@ router.get("/", (req, res) => {
   User.findById(req.session.user._id)
     .populate("pantry")
     .then((data) => {
-      console.log(data);
+      //console.log(data);
+      const { email } = req.session.user;
       const { pantry } = data;
-      res.render("pantry", { pantry });
+      res.render("pantry", { pantry, email });
     });
 });
 
@@ -35,12 +36,12 @@ router.post("/remove", (req, res) => {
 
 router.get("/edit/:id", (req, res) => {
   Ingredient.findById(req.params.id).then((ingredient) => {
+    console.log(ingredient);
     res.render("pantry-edit", { ingredient });
   });
 });
 router.post("/edit/:id", (req, res) => {
   const { category, name, availability, amount } = req.body;
-
   const data = {
     category: category,
     name: name,
@@ -155,11 +156,11 @@ router.get("/options", (req, res, next) => {
 
 router.post("/options", (req, res, next) => {
   const { option } = req.body;
-  console.log(option);
   option.forEach((element) => {
+    const newarr = element.split(",");
     Ingredient.create({
-      category: "to be determined",
-      name: element,
+      category: newarr[0],
+      name: newarr[1],
       amount: 1,
     }).then((addedIngredient) => {
       User.findByIdAndUpdate(
