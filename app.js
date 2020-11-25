@@ -19,6 +19,13 @@ const capitalized = (string) =>
 app.locals.title = `${capitalized(projectName)}- Generated with IronGenerator`;
 // default value for title local
 
+app.use((req, res, next) => {
+  if (req.session.user) {
+    res.locals.email = req.session.user.email;
+  }
+  next();
+});
+
 // 👇 Start handling routes here
 const index = require("./routes/index");
 app.use("/", index);
