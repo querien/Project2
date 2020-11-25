@@ -6,5 +6,28 @@ body {
 a {
   color: #00b7ff;
 }
-
 /* # sourceMappingURL=style.css.map */
+
+/* PROFILE PAGE */
+.profile {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+}
+
+.profile-title {
+  color: #f4c129;
+}
+
+.update-password {
+  text-align: center;
+}
+
+input {
+  border: none;
+  background-color: #f4c129;
+  color: #f8f6ea;
+}

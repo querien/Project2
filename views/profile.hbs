@@ -1,21 +1,29 @@
-<button><a href="/auth/logout">Log out</a></button>
-<h1>Welcome to your cookbook</h1>
+<div class="profile">
+    <div class="side-profile">
+        <div class="profile-title">
+            <h1>Welcome to your cuisine!</h1>
+        </div>
+        <div class="update-password">
+            <h3>Update your password</h3>
+            <form action="/update-password" method="POST">
+                <label for="">Old Password:</label>
+                <input type="password" name="oldPassword">
+                <br>
+                <label for="">New Password:</label>
+                <input type="password" name="newPassword">
+                <br>
+                <label for="">Confirm New Password:</label>
+                <input type="password" name="confirmPassword">
+                <br>
+                <button type="submit">Update your password</button>
+            </form>
+            <form action="/delete-profile" method="POST">
+                <button type="submit">Delete your profile</button>
+            </form>
+        </div>
+    </div>
+    <div class="add-recipe">
+        <a href="/recipes/new-recipe">Add a recipe</a>
+    </div>
 
-<form action="/update-password" method="POST">
-    <label for="">Old Password</label>
-    <input type="password" name="oldPassword">
-    <br>
-    <label for="">New Password</label>
-    <input type="password" name="newPassword">
-    <br>
-    <label for="">Confirm New Password</label>
-    <input type="password" name="confirmPassword">
-    <br>
-    <button type="submit">Update your password</button>
-</form>
-
-<form action="/delete-profile" method="POST">
-    <button type="submit">Delete your profile</button>
-</form>
-
-<button><a href="/recipes/new-recipe">Add a recipe</a></button>
+</div>
