@@ -6,9 +6,7 @@
     <button type="submit" name="removeIngredient" value={{_id}}>Remove</button>
 </form>
 
-<form action="/pantry/edit" method="POST">
-    <button type="submit" name="editIngredient" value={{_id}}>Edit</button>
-</form>
+<a href="/pantry/edit/{{_id}}">Edit</a>
 </p>
 
 {{/each}}

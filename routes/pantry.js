@@ -14,6 +14,7 @@ router.get("/", (req, res) => {
   User.findById(req.session.user._id)
     .populate("pantry")
     .then((data) => {
+      console.log(data);
       const { pantry } = data;
       res.render("pantry", { pantry });
     });
@@ -28,23 +29,43 @@ router.post("/remove", (req, res) => {
   });
 });
 
-router.post("/edit", (req, res) => {
-  const id = req.body.editIngredient;
-  Ingredient.findById(id)
-    .then((foundIngredient) => {
-      console.log(("Found this", foundIngredient));
-      res.render("pantry-edit", { foundIngredient });
-    })
-    .then(() => {
-      const { name, amount, availability, category } = req.body;
-      findByIdAndUpdate(id, {
-        name: name,
-        category: category,
-        availability: availability,
-        amount: amount,
-      });
-    });
+router.get("/edit/:id", (req, res) => {
+  Ingredient.findById(req.params.id).then((ingredient) => {
+    res.render("pantry-edit", { ingredient });
+  });
 });
+router.post("/edit/:id", (req, res) => {
+  const { category, name, availability, amount } = req.body;
+
+  const data = {
+    category: category,
+    name: name,
+    availability: availability,
+    amount: amount,
+  };
+  Ingredient.findByIdAndUpdate(req.params.id, data).then((ingredient) => {
+    console.log(ingredient);
+    res.redirect("/pantry");
+  });
+});
+
+// router.post("/edit", (req, res) => {
+//   const id = req.body.editIngredient;
+//   Ingredient.findById(id)
+//     .then((foundIngredient) => {
+//       console.log(("Found this", foundIngredient));
+//       res.render("pantry-edit", { foundIngredient });
+//     })
+//     .then(() => {
+//       const { name, amount, availability, category } = req.body;
+//       findByIdAndUpdate(id, {
+//         name: name,
+//         category: category,
+//         availability: availability,
+//         amount: amount,
+//       });
+//     });
+// });
 
 // Ingredient.findByIdAndDelete(id).then((removedIngredient) => {
 //   console.log("removed ingredient", removedIngredient);

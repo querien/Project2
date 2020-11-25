@@ -96,9 +96,16 @@ router.get("/", (req, res) => {
   if (!req.session.user) {
     return res.redirect("/auth/login");
   }
-  Recipe.find().then((recipes) => {
-    res.render("recipes-list", { recipes });
-  });
+  User.findById(req.session.user._id)
+    .populate("recipes")
+    .then((data) => {
+      console.log(data);
+      const { recipes } = data;
+      res.render("recipes-list", { recipes });
+    });
+  // Recipe.find().then((recipes) => {
+  //   res.render("recipes-list", { recipes });
+  // });
 });
 
 module.exports = router;

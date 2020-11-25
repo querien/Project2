@@ -15,7 +15,10 @@ router.get("/shopping-list/:_id", (req, res, next) => {
       const shoppingList = recipeIngredients.filter(
         (ingredient) => !pantryIngredients.includes(ingredient)
       );
-      res.render("shopping-list", { ingredients: shoppingList });
+      res.render("shopping-list", {
+        ingredients: shoppingList,
+        recipe: recipe,
+      });
     });
   });
 });
