@@ -1,44 +1,63 @@
 <form method="post" action="/pantry/options">
+
+
+  <input class="submitoptions" type="submit" value="Submit now" />
   <legend>Add ingredients</legend>
   <fieldset>
-    <h2>Oil and vinegar</h2>
-    {{#each oils}}
-    <input type="checkbox" name="option" value="{{this}}">{{this}}<br>
-    {{/each}}
+    <div class="optioncontainer">
+      <h2>Oil and vinegar</h2>
+      {{#each oils}}
+      <input type="checkbox" name="option" value="Oil and vinegar,{{this}}">{{this}}<br>
+      {{/each}}
+    </div>
 
-    <h2>Herbs and spices</h2>
-    {{#each herbs}}
-    <input type="checkbox" name="option" value="{{this}}">{{this}}<br>
-    {{/each}}
-
-    <h2>Condiments</h2>
-    {{#each condiments}}
-    <input type="checkbox" name="option" value="{{this}}">{{this}}<br>
-    {{/each}}
-
-    <h2>Sweeteners</h2>
-    {{#each sweeteners}}
-    <input type="checkbox" name="option" value="{{this}}">{{this}}<br>
-    {{/each}}
+    <div class="optioncontainer">
+      <h2>Herbs and spices</h2>
+      {{#each herbs}}
+      <input type="checkbox" name="option" value="Herbs and spices,{{this}}">{{this}}<br>
+      {{/each}}
+    </div>
 
 
-    <h2>Grains and starches</h2>
-    {{#each grains}}
-    <input type="checkbox" name="option" value="{{this}}">{{this}}<br>
-    {{/each}}
+    <div class="optioncontainer">
+      <h2>Condiments</h2>
+      {{#each condiments}}
+      <input type="checkbox" name="option" value="Condiments,{{this}}">{{this}}<br>
+      {{/each}}
+    </div>
 
-    <h2>Beans (dry or canned)</h2>
-    {{#each beans}}
-    <input type="checkbox" name="option" value="{{this}}">{{this}}<br>
-    {{/each}}
 
-    <h2>Canned foods</h2>
-    {{#each canned}}
-    <input type="checkbox" name="option" value="{{this}}">{{this}}<br>
-    {{/each}}
+    <div class="optioncontainer">
+      <h2>Sweeteners</h2>
+      {{#each sweeteners}}
+      <input type="checkbox" name="option" value="Sweeteners,{{this}}">{{this}}<br>
+      {{/each}}
+    </div>
+
+    <div class="optioncontainer">
+      <h2>Grains and starches</h2>
+      {{#each grains}}
+      <input type="checkbox" name="option" value="Grains and starches,{{this}}">{{this}}<br>
+      {{/each}}
+    </div>
+    <div class="optioncontainer">
+      <h2>Beans (dry or canned)</h2>
+      {{#each beans}}
+      <input type="checkbox" name="option" value="Beans,{{this}}">{{this}}<br>
+      {{/each}}
+    </div>
+
+    <div class="optioncontainer">
+      <h2>Canned foods</h2>
+      {{#each canned}}
+      <input type="checkbox" name="option" value="Canned foods,{{this}}">{{this}}<br>
+      {{/each}}
+    </div>
+
+
 
   </fieldset>
 
-  <input type="submit" value="Submit now" />
+
 
 </form>
