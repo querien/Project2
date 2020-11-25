@@ -112,18 +112,6 @@ function prepareForFrontend(ingredients) {
 // if acc[v.category] => if acc["Oils and vinegar"] -> acc.OilsAndVinegar
 // return {"Oils and vinegar": ["Extr virgin"]} -> {"Oils and vinegar": ["extr virgin", "Cocunt oil"]}
 
-//prepareForFrontend(ingredients);
-// const categories = {[
-//   "Oils and vinegar",
-//   "Herbs and spices",
-//   "Condiments",
-//   "Sweeteners",
-//   "Grains and starches",
-//   "Beans",
-//   "Canned goods",
-//   "Produce",
-// ]};
-
 router.get("/add", (req, res, next) => {
   res.render("pantry-add");
 });
