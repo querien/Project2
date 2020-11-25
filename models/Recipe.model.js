@@ -24,6 +24,7 @@ const recipeSchema = new Schema({
     enum: ["dinner", "lunch", "breakfast", "dessert"],
   },
   servings: Number,
+  images: String,
   author: [
     {
       type: mongoose.Schema.Types.ObjectId,
