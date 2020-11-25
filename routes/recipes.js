@@ -103,9 +103,6 @@ router.get("/", (req, res) => {
       const { recipes } = data;
       res.render("recipes-list", { recipes });
     });
-  // Recipe.find().then((recipes) => {
-  //   res.render("recipes-list", { recipes });
-  // });
 });
 
 module.exports = router;
