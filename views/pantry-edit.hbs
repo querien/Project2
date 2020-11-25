@@ -1,8 +1,8 @@
-<h1>Edit Ingredient </h1>
+<h3>Edit Ingredient </h3>
 
 
-<h3>Editing {{ingredient.name}}</h3>
-<h3>The current amount is {{ingredient.amount}}</h3>
+<h4>Editing {{ingredient.name}}</h4>
+<h4>The current amount is {{ingredient.amount}}</h4>
 
 <form action="/pantry/edit/{{ingredient._id}}" method="POST">
   <p>
@@ -17,7 +17,8 @@
     <label>Availability</label>
     <select name="availability" id="availability">
       <option value="I always have this ingredient"
-        {{selected "I always have this ingredient" ingredient.availability}}>I always have this ingredient</option>
+        {{selected "I always have this ingredient" ingredient.availability}}>I always have this ingredient
+      </option>
       <option value="I sometimes have this ingredient"
         {{selected "I sometimes have this ingredient" ingredient.availability}}>I sometimes have this ingredient
       </option>
