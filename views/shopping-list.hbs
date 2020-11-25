@@ -1,10 +1,10 @@
-<h1>Groceries list for {{recipe.title}}</h1>
+<div class="shopping-list">
+    <h1>Groceries list for {{recipe.title}}</h1>
+    {{#each ingredients}}
+    <p>
+        <input type="checkbox" name="" id="{{this}}">
+        <label for="{{this}}">{{this}}</label>
+    </p>
+    {{/each}}
 
-{{#each ingredients}}
-
-
-<p><input type="checkbox" name="" id="">
-    <label for="">{{this}}</label></p>
-
-
-{{/each}}
+</div>

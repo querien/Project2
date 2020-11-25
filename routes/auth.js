@@ -113,15 +113,19 @@ router.post("/login", shouldNotBeLoggedIn, (req, res) => {
           .render("auth/login", { errorMessage: "Wrong credentials" });
       }
 
-      return bcrypt.compare(password, user.password);
+      return {
+        user: user,
+        isSamePassword: bcrypt.compare(password, user.password),
+      };
     })
-    .then((isSamePassword) => {
+    .then((result) => {
+      const { user, isSamePassword } = result;
       if (!isSamePassword) {
         return res
           .status(400)
           .render("auth/login", { errorMessage: "Wrong credentials" });
       }
-      req.session.user = email;
+      req.session.user = user;
       // req.session.user = user._id ! better and safer but in this case we saving the entire user object
       return res.redirect("/profile");
     })

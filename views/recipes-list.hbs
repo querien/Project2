@@ -1,18 +1,21 @@
-<h1>Recipes library</h1>
-<form id="search-recipes" action="/recipes">
-    <input name="search" type="text" placeholder="Search recipes...">
-    <button type="submit">Search</button>
-</form>
-<ul id="recipes-list">
+<div class="recipes-library">
+    <h1>Recipes library</h1>
+    <form id="search-recipes" action="/recipes">
+        <input name="search" type="text" placeholder="Search recipes...">
+        <button type="submit">Search</button>
+    </form>
+    <ul class="recipes-list">
 
-    {{#each recipes}}
-    <li>
-        <a href="/recipes/{{_id}}">
-            <h1>{{title}}</h1>
-        </a>
-        <p>{{description}}</p>
-    </li>
+        {{#each recipes}}
+        <div class="recipe-card">
+            <li>
+                <a href="/recipes/{{_id}}" class="rec-title">{{title}}</a>
+                <p>{{description}}</p>
+            </li>
+        </div>
 
-    {{/each}}
+        {{/each}}
 
-</ul>
+    </ul>
+
+</div>
