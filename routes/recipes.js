@@ -50,8 +50,13 @@ router.post("/recipe", (req, res) => {
 
 router.post("/delete-recipe/:id", (req, res) => {
   Recipe.findByIdAndDelete(req.params.id).then((removedRecipe) => {
-    console.log("removed recipe", removedRecipe);
-    res.redirect("/recipes");
+    User.findByIdAndUpdate(
+      { _id: req.session.user._id },
+      { $pull: { recipes: removedRecipe._id } }
+    ).then((user) => {
+      res.redirect("/recipes");
+    });
+    //console.log("removed recipe", removedRecipe);
   });
 });
 

@@ -22,10 +22,14 @@ router.get("/", (req, res) => {
 
 router.post("/remove", (req, res) => {
   const id = req.body.removeIngredient;
-  console.log(id);
+  const userid = req.session.user._id;
   Ingredient.findByIdAndDelete(id).then((removeIngredient) => {
-    console.log("removed ingredient", removeIngredient);
-    res.redirect("/pantry");
+    User.findByIdAndUpdate(
+      { _id: userid },
+      { $pull: { pantry: removeIngredient._id } }
+    ).then((user) => {
+      res.redirect("/pantry");
+    });
   });
 });
 
@@ -44,7 +48,7 @@ router.post("/edit/:id", (req, res) => {
     amount: amount,
   };
   Ingredient.findByIdAndUpdate(req.params.id, data).then((ingredient) => {
-    console.log(ingredient);
+    //console.log(ingredient);
     res.redirect("/pantry");
   });
 });
@@ -84,7 +88,7 @@ function prepareForFrontend(ingredients) {
     //console.log(acc[v.category]);
     const shortenedCategory = v.category.split(" ")[0].toLowerCase();
     if (acc[shortenedCategory]) {
-      console.log("PREVOIOUS VERSION OF THE ARRAY", acc[v.category]);
+      //console.log("PREVOIOUS VERSION OF THE ARRAY", acc[v.category]);
       return {
         ...acc,
         [shortenedCategory]: [...acc[shortenedCategory], v.name],
