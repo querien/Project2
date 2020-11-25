@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500&family=Source+Serif+Pro:wght@400;600;700&display=swap");
+
 body {
   background-color: #7a2525;
   padding: 50px;
@@ -7,7 +9,7 @@ body {
 
 h1 {
   font-family: "Source Serif Pro", serif;
-  font-size: 120px;
+  /* font-size: 120px; */
   color: #f4c129;
 }
 
@@ -27,9 +29,11 @@ input {
 button {
   text-decoration: none;
   color: #f8f6ea;
+  font-family: "Roboto", sans-serif;
   background-color: #f4c129;
-  padding: 5px 10px;
+  padding: 10px 20px;
   border: none;
+  border-radius: 30px;
 }
 
 #logo {
@@ -63,32 +67,102 @@ a {
 }
 /* # sourceMappingURL=style.css.map */
 
-
-/* PROFILE PAGE */
-.profile {
+.profile,
+.recipe-form,
+.recipe {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  align-content: center;
 }
 
-.profile-title {
-  color: #f4c129;
+.profile-title h1,
+.recipe-title h1 {
+  font-size: 60px;
+}
+
+.profile-content {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 
 .update-password {
+  text-align: left;
+  margin-right: 200px;
+}
+.update-password h3 {
+  font-weight: 300;
+  border-bottom: 1px solid #f4c129;
+}
+.update-password button {
+  margin-top: 20px;
+}
+
+.recipe-form {
   text-align: center;
+}
+
+.recipe-form-content button {
+  margin-top: 20px;
+}
+
+.add-recipe a {
+  padding: 50px;
+  border-radius: 80px;
+}
+
+.img {
+  height: 200px;
+  width: auto;
+  background-size: cover;
+}
+
+.infos {
+  display: flex;
+  justify-content: space-around;
+  border-bottom: 1px solid #f4c129;
+  margin-bottom: 20px;
+}
+
+.infos p {
+  padding: 0 20px;
 }
 
 input {
   border: none;
   background-color: #f4c129;
   color: #f8f6ea;
+  border-radius: 30px;
+  margin: 10px;
+  padding: 5px 10px;
+  outline: none;
+}
+
+label {
+  font-weight: 100;
+}
+
+textarea {
+  resize: none;
+  background-color: #f4c129;
+  border: none;
+  border-radius: 30px;
+  margin: 10px;
+  padding: 5px 20px;
+  outline: none;
+}
+
+select {
+  outline: none;
+  background-color: #f4c129;
+  border-radius: 30px;
+  margin: 10px;
+  padding: 5px 20px;
+  color: #f8f6ea;
 }
 
 /* background color #7A2525 */
 /* accent color #F4C129 */
 /* text color #F8F6EA */
-
