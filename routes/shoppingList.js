@@ -18,14 +18,14 @@ router.get("/shopping-list/:_id", (req, res, next) => {
         (ingredient) => !pantryIngredients.includes(ingredient.toLowerCase())
       );
       console.log("shoppinglist", shoppingList);
-      const instockalways = recipeIngredients.filter((ingredient) =>
-        pantryIngredients.includes(ingredient)
+      const instock = recipeIngredients.filter((ingredient) =>
+        pantryIngredients.includes(ingredient.toLowerCase())
       );
-      console.log("instock", instockalways);
+      console.log("instock", instock);
       res.render("shopping-list", {
-        toBuy: shoppingList,
+        shoppingList: shoppingList,
         recipe: recipe,
-        inStockalways: instockalways,
+        instock: instock,
       });
     });
   });

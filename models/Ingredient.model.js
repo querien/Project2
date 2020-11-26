@@ -8,11 +8,6 @@ const ingredientSchema = new Schema({
     unique: true,
   },
 
-  availability: {
-    type: String,
-    enum: ["I always have this ingredient", "I sometimes have this ingredient"],
-    default: "I always have this ingredient",
-  },
   amount: Number,
   author: [
     {
