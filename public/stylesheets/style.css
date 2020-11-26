@@ -56,7 +56,7 @@ button:hover {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-top: 100px;
+  margin-top: 200px;
 }
 
 .buttoncontainer {
@@ -83,10 +83,20 @@ a:hover {
 .navbar {
   display: flex !important;
   justify-content: flex-start;
+  border-bottom: 1px solid #f4c129;
 }
 
 nav ul {
   display: flex;
+}
+
+.auth-container {
+  margin-top: 100px;
+  margin-left: 70px;
+}
+
+.signup-container form {
+  display: contents;
 }
 
 #user {
@@ -122,6 +132,10 @@ nav ul {
   align-items: center;
 }
 
+.profile {
+  margin-top: 100px;
+}
+
 .profile-title h1,
 .recipe-title h1,
 .recipes-library h1,
@@ -134,7 +148,12 @@ nav ul {
   flex-direction: row;
   flex-wrap: wrap;
   align-items: baseline;
-  margin: 20px;
+  width: 100%;
+  justify-content: flex-end;
+}
+
+.list-header h1 {
+  margin-right: 300px;
 }
 
 .recipes-library input {
@@ -184,11 +203,18 @@ nav ul {
   display: flex;
   flex-direction: row;
   align-items: center;
+  width: 100%;
+  justify-content: space-between;
+  margin-top: 50px;
 }
 
 .update-password {
   text-align: left;
-  margin-right: 200px;
+  margin-left: 70px;
+  border: 1px solid #f4c129;
+  padding: 20px;
+  border-radius: 30px;
+  text-align: center;
 }
 .update-password h3 {
   text-align: center;
@@ -199,18 +225,34 @@ nav ul {
   margin-top: 20px;
 }
 
+.recipe-container {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
 .recipe-form {
   text-align: center;
 }
-
+.recipe-form-content {
+  margin-top: 50px;
+}
 .recipe-form-content button {
   margin-top: 20px;
 }
-
+.add-recipe {
+  margin-right: 580px;
+}
 .add-recipe a {
   padding: 50px;
   border-radius: 80px;
   font-weight: 500;
+}
+
+.add-recipe-list {
+  margin: 10px 0 30px;
 }
 
 .recipe {
@@ -252,6 +294,12 @@ nav ul {
 .recipe button {
   font-weight: 300;
   margin: 10px;
+}
+
+.action-buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 input {
@@ -382,6 +430,6 @@ input {
 .midsentence-anchor {
   background-color: transparent;
   margin: 0;
-  padding: 5px;
+  padding: 5px 10px;
   font-style: italic;
 }

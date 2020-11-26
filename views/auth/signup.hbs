@@ -1,13 +1,15 @@
-<h1>Sign up</h1>
-<form action="/auth/signup" method="POST">
-   <label for="email">email</label>
-   <input type="text" id="email" name="email">
-   <label for="password">password</label>
-   <input type="password" id="password" name="password">
+<div class="auth-container">
+   <h1>Sign up</h1>
+   <form action="/auth/signup" method="POST">
+      <label for="email">email</label>
+      <input type="text" id="email" name="email">
+      <label for="password">password</label>
+      <input type="password" id="password" name="password">
 
-   <button type="submit">Submit</button>
-</form>
+      <button type="submit">Submit</button>
+   </form>
 
-{{#if errorMessage}}
-<h2>{{errorMessage}}</h2>
-{{/if}}
+   {{#if errorMessage}}
+   <h2>{{errorMessage}}</h2>
+   {{/if}}
+</div>

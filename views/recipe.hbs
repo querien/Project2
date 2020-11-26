@@ -1,32 +1,31 @@
-<div class="recipe">
-    <div class="recipe-title">
-        <h1>{{loud recipe.title}}</h1>
+<div class="recipe-container">
+    <div class="recipe">
+        <div class="recipe-title">
+            <h1>{{loud recipe.title}}</h1>
+        </div>
+        <p>{{upper recipe.description}}</p>
+        <img src="{{recipe.images}}" class="img">
+        <div class="infos">
+            <p>{{loud recipe.dishes}}</p>
+            <p>{{recipe.duration}}min</p>
+            <p>{{recipe.servings}} portions</p>
+        </div>
+        <h4>Ingredients</h4>
+        <ul>
+            {{#each recipe.ingredients}}
+            <li>{{upper this}}</li>
+            {{/each}}
+        </ul>
+        <h4>How to prepare:</h4>
+        <p>{{upper recipe.directions}}</p>
     </div>
-    <p>{{upper recipe.description}}</p>
-    <img src="{{recipe.images}}" class="img">
-    <div class="infos">
-        <p>{{loud recipe.dishes}}</p>
-        <p>{{recipe.duration}}min</p>
-        <p>{{recipe.servings}} portions</p>
+    <div class="action-buttons">
+        <a href="/shopping-list/{{recipe._id}}">Create your groceries list</a>
+
+        <a href="/recipes/edit-recipe/{{recipe._id}}">Edit your recipe</a>
+
+        <form action="/recipes/delete-recipe/{{recipe._id}}" method="POST">
+            <button type="submit">Delete this recipe</button>
+        </form>
     </div>
-    <h4>Ingredients</h4>
-    <ul>
-        {{#each recipe.ingredients}}
-        <li>{{upper this}}</li>
-        {{/each}}
-    </ul>
-
-
-    <h4>How to prepare:</h4>
-    <p>{{upper recipe.directions}}</p>
-
-
-    <a href="/shopping-list/{{recipe._id}}">Create your groceries list</a>
-
-    <a href="/recipes/edit-recipe/{{recipe._id}}">Edit your recipe</a>
-
-    <form action="/recipes/delete-recipe/{{recipe._id}}" method="POST">
-        <button type="submit">Delete this recipe</button>
-    </form>
-
 </div>

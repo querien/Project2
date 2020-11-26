@@ -1,5 +1,7 @@
 <div class="recipe-form">
     <h1>Edit your recipe</h1>
+    <a href="/recipes/{{recipe._id}}">Go back to your recipe</a>
+
     <div class="recipe-form-content">
         <form action="/recipes/edit/{{recipe._id}}" method="POST">
             <label for="title">Title</label><br>
@@ -10,12 +12,12 @@
 
             <label for="ingredients">Please, fill in your ingredients separated by a comma:</label><br>
 
-            <textarea id="ingredients" name="ingredients" placeholder="*required" rows="4" cols="50">{{recipe.ingredients}}
-        </textarea><br>
+            <textarea id="ingredients" name="ingredients" placeholder="*required" rows="4"
+                cols="50">{{recipe.ingredients}}</textarea><br>
 
             <label for="directions">Directions:</label><br>
-            <textarea name="directions" id="directions" placeholder="*required" cols="30"
-                rows="10">{{recipe.directions}}</textarea><br>
+            <textarea name="directions" id="directions" placeholder="*required" cols="50"
+                rows="4">{{recipe.directions}}</textarea><br>
 
             <label for="duration">Duration</label><br>
             <input type="text" name="duration" id="duration" value="{{recipe.duration}}"><br>
@@ -37,7 +39,6 @@
             <input type="file" name="imageUrl" accept="image/png, image/jpg"><br>
             <button type="submit">Submit</button>
         </form>
-
     </div>
 
 </div>
