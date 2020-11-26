@@ -1,20 +1,23 @@
 <div class="recipe">
-    <img src="{{recipe.images}}" alt="" class="img">
     <div class="recipe-title">
         <h1>{{recipe.title}}</h1>
     </div>
     <p>{{recipe.description}}</p>
+    <img src="{{recipe.images}}" alt="" class="img">
     <div class="infos">
         <p>{{recipe.dishes}}</p>
         <p>{{recipe.duration}}min</p>
-        <p>Serves up to {{recipe.servings}} portions</p>
+        <p>{{recipe.servings}} portions</p>
     </div>
-    <h5>Ingredients</h5>
-    <p>{{recipe.ingredients}}
-    <p>
+    <h4>Ingredients</h4>
+    <ul>
+        {{#each recipe.ingredients}}
+        <li>{{this}}</li>
+        {{/each}}
+    </ul>
 
 
-    <h5>How to make:</h5>
+    <h4>How to prepare:</h4>
     <p>{{recipe.directions}}</p>
 
 

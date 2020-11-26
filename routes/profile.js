@@ -6,6 +6,9 @@ router.get("/profile", (req, res) => {
   if (!req.session.user) {
     return res.redirect("/auth/login");
   }
+  console.log(req.session);
+  console.log(req.session.user);
+  console.log(req.session.user._id);
   User.findById(req.session.user._id).then((myUser) => {
     console.log("myUser:", myUser.email);
     res.render("profile", { myUser });
