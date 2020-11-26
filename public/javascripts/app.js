@@ -7,7 +7,6 @@ searchBar.addEventListener("keyup", (e) => {
 
   const recipes = list.getElementsByTagName("li");
   Array.from(recipes).forEach((recipe) => {
-
     const title = recipe.firstElementChild.textContent;
     if (title.toLowerCase().indexOf(term) !== -1) {
       recipe.style.display = "block";
