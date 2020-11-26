@@ -1,9 +1,9 @@
 <div class="shopping-list">
-    <h1>Groceries list for {{recipe.title}}</h1>
+    <h1>Groceries list for {{loud recipe.title}}</h1>
     {{#each ingredients}}
     <p>
         <input type="checkbox" name="" id="{{this}}">
-        <label for="{{this}}">{{this}}</label>
+        <label for="{{this}}">{{loud this}}</label>
     </p>
     {{/each}}
 

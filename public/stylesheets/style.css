@@ -163,6 +163,10 @@ nav ul {
   width: 100%;
 }
 
+.recipe-card p {
+  padding-top: 10px;
+}
+
 .profile-content {
   display: flex;
   flex-direction: row;
