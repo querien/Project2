@@ -45,7 +45,6 @@ router.post("/edit/:id", (req, res) => {
   const data = {
     category: category,
     name: name,
-    availability: availability,
     amount: amount,
   };
   Ingredient.findByIdAndUpdate(req.params.id, data).then((ingredient) => {
@@ -134,35 +133,9 @@ router.post("/add", (req, res, next) => {
   Ingredient.create({
     category: category,
     name: name,
-    availability: availability,
     amount: amount,
-  }).then((addedIngredient) => {
-    User.findByIdAndUpdate(
-      req.session.user._id,
-      {
-        $addToSet: { pantry: addedIngredient._id },
-      },
-      { new: true }
-    ).then((newPantry) => {
-      console.log("newPantry:", newPantry);
-      res.redirect("/pantry");
-    });
-  });
-});
-
-router.get("/options", (req, res, next) => {
-  res.render("options", prepareForFrontend(ingredients));
-});
-
-router.post("/options", (req, res, next) => {
-  const { option } = req.body;
-  option.forEach((element) => {
-    const newarr = element.split(",");
-    Ingredient.create({
-      category: newarr[0],
-      name: newarr[1],
-      amount: 1,
-    }).then((addedIngredient) => {
+  })
+    .then((addedIngredient) => {
       User.findByIdAndUpdate(
         req.session.user._id,
         {
@@ -171,10 +144,47 @@ router.post("/options", (req, res, next) => {
         { new: true }
       ).then((newPantry) => {
         console.log("newPantry:", newPantry);
+        res.redirect("/pantry");
       });
-      res.redirect("/pantry");
+    })
+    .catch((error) => {
+      if (error.code === 11000) {
+        return res.status(400).render("pantry-add", {
+          errorMessage: "Ingredient names need to be unique! Please try again",
+        });
+      }
     });
+});
+
+router.get("/options", (req, res, next) => {
+  res.render("options", prepareForFrontend(ingredients));
+});
+
+router.post("/options", (req, res, next) => {
+  const { option } = req.body;
+
+  const mapOfIngredients = option.map((element) => {
+    const [category, name] = element.split(",");
+    return Ingredient.create({ category, name, amount: 1 });
   });
+  Promise.all(mapOfIngredients)
+    .then((arrayOfPromisesResolve) => {
+      const updateUser = arrayOfPromisesResolve.map((element) => {
+        return User.findByIdAndUpdate(req.session.user_id, {
+          $addToSet: { pantry: element._id },
+        });
+      });
+      Promise.all(updateUser).then(() => {
+        res.redirect("/pantry");
+      });
+    })
+    .catch((error) => {
+      if (error.code === 11000) {
+        return res.status(400).render("options", {
+          errorMessage: "Ingredient names need to be unique! Please try again",
+        });
+      }
+    });
 });
 
 module.exports = router;
