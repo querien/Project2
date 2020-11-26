@@ -2,16 +2,17 @@
 
     <h1>My pantry</h1>
 
-    <input type="text" id="myInput" onkeyup="searchPantry()" placeholder="Search for categories..">
+    <input type="text" id="myInput" onkeyup="searchPantry()" placeholder="Search for categories.."
+        class="search-pantry">
 
     <div class="table-pantry">
-        <table id="pantry" class="pantry" style="width:100%">
+        <table id="pantry" class="pantry">
             <tr>
                 <th>Category</th>
                 <th>Ingredient</th>
                 <th>Amount</th>
-                <th>Remove</th>
-                <th>Edit</th>
+                <th width="10%">Remove</th>
+                <th width="10%">Edit</th>
             </tr>
             {{#each pantry}}
             <tr>
@@ -33,8 +34,8 @@
 
 
 
-    <a href="/pantry/add">Add customized ingredient!</a>
-    <a href="/pantry/options">Add ingredients from a predefined list!</a>
+    <a class="white-text" href="/pantry/add">Add customized ingredient!</a>
+    <a class="white-text" href="/pantry/options">Add ingredients from a predefined list!</a>
 </div>
 
 </div>
