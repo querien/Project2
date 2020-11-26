@@ -56,4 +56,17 @@ hbs.handlebars.registerHelper("selected", function (option, value) {
   }
 });
 
+hbs.handlebars.registerHelper("loud", function (aString) {
+  const words = aString.split(" ");
+  return words
+    .map((word) => {
+      return word[0].toUpperCase() + word.substring(1);
+    })
+    .join(" ");
+});
+
+hbs.handlebars.registerHelper("upper", function (aString) {
+  return aString[0].toUpperCase() + aString.slice(1);
+});
+
 module.exports = app;
