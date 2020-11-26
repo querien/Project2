@@ -1,10 +1,24 @@
 <div class="shopping-list">
+
     <h1>Groceries list for {{loud recipe.title}}</h1>
-    {{#each ingredients}}
+
+    <h4>You need to buy these ingredients:</h4>
+    {{#each toBuy}}
     <p>
         <input type="checkbox" name="" id="{{this}}">
         <label for="{{this}}">{{loud this}}</label>
     </p>
     {{/each}}
+
+
+    <h4>These ingredients are in your <a class="midsentence-anchor" href="/pantry">pantry</a>:</h4>
+    {{#each inStockalways}}
+    <p>
+        <input type="checkbox" name="" id="{{this}}">
+        <label for="{{this}}">{{loud this}}</label>
+    </p>
+    {{/each}}
+
+
 
 </div>
