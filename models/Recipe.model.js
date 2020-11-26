@@ -18,13 +18,20 @@ const recipeSchema = new Schema({
     required: true,
     type: String,
   },
-  duration: Number,
+  duration: {
+    type: String,
+    default: "--",
+  },
   dishes: {
     type: String,
     enum: ["dinner", "snacks", "breakfast", "dessert", "main"],
   },
   servings: Number,
-  images: String,
+  images: {
+    type: String,
+    default:
+      "https://images.pexels.com/photos/4110238/pexels-photo-4110238.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+  },
   author: [
     {
       type: mongoose.Schema.Types.ObjectId,

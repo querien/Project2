@@ -17,7 +17,7 @@
             <textarea name="directions" id="directions" cols="30" rows="10">{{recipe.directions}}</textarea><br>
 
             <label for="duration">Duration</label><br>
-            <input type="text" name="duration" id="duration" placeholder="30min" value="{{recipe.duration}}"><br>
+            <input type="text" name="duration" id="duration" value="{{recipe.duration}}"><br>
 
             <label for="dishes">Categories:</label><br>
             <select id="dishes" name="dishes">
@@ -32,6 +32,8 @@
 
             <label for="servings">Serving size</label><br>
             <input type="number" min="1" name="servings" id="servings" value="{{recipe.servings}}"><br>
+            <label for="images">Upload an image:</label><br>
+            <input type="file" name="imageUrl" accept="image/png, image/jpg"><br>
             <button type="submit">Submit</button>
         </form>
 
