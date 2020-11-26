@@ -305,6 +305,43 @@ th {
   text-align: left;
 }
 
+td > a,
+button {
+  background-color: #7a2525;
+  border-bottom: 1px solid #f4c129;
+}
+
+td > a:hover,
+button:hover {
+  background-color: #f4c129;
+}
+
+.pantrycontainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.add-pantry {
+  text-align: center;
+  font-size: 18px;
+}
+.add-pantry button,
+option,
+input {
+  margin: 10px;
+  font-size: 18px;
+  font-weight: ;
+}
+
+.bottom-anchors {
+  margin: 20px auto;
+  display: flex;
+  align-items: space-around;
+  justify-content: center;
+}
+
 .pantry {
   display: flex;
   flex-direction: column;
