@@ -66,6 +66,10 @@ hbs.handlebars.registerHelper("loud", function (aString) {
 });
 
 hbs.handlebars.registerHelper("upper", function (aString) {
+  console.log(aString);
+  if (aString === "") {
+    return "";
+  }
   return aString[0].toUpperCase() + aString.slice(1);
 });
 
