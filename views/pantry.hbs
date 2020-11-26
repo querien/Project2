@@ -1,8 +1,12 @@
 <div class="pantrycontainer">
 
     <h1>My pantry</h1>
-    <input type="text" id="myInput" onkeyup="searchPantry()" placeholder="Search for categories..">
 
+
+
+    <input type="text" id="myInput" onkeyup="searchPantry()" placeholder="Search for categories..">
+    
+ <div class="table-pantry">
     <table id="pantry" class="pantry" style="width:100%">
         <tr>
             <th>Category</th>
@@ -27,6 +31,8 @@
         {{/each}}
 
     </table>
+        </div>
+
 
 
     <a href="/pantry/add">Add customized ingredient!</a>
