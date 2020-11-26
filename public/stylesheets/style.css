@@ -126,6 +126,14 @@ nav ul {
   font-size: 60px;
 }
 
+.list-header {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: baseline;
+  margin: 20px;
+}
+
 .recipes-library input {
   background-color: transparent;
   border-bottom: 1px solid #f4c129;
@@ -137,6 +145,8 @@ nav ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .rec-title {

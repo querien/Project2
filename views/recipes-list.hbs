@@ -1,9 +1,14 @@
 <div class="recipes-library">
     <h1>Recipes library</h1>
-    <form id="search-recipes" action="/recipes">
-        <input name="search" type="text" placeholder="Search recipes...">
-        <button type="submit">Search</button>
-    </form>
+    <div class="list-header">
+        <form id="search-recipes" action="/recipes">
+            <input name="search" type="text" placeholder="Search recipes...">
+            <button type="submit">Search</button>
+        </form>
+        <div class="add-recipe-list">
+            <a href="/recipes/new-recipe">Add a recipe</a>
+        </div>
+    </div>
     <ul class="recipes-list">
 
         {{#each recipes}}

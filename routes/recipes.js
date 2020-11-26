@@ -34,7 +34,7 @@ router.post("/recipe", uploader.single("imageUrl"), (req, res) => {
     duration: duration,
     dishes: dishes,
     servings: servings,
-    images: (req.file && req.file.path) || "",
+    images: req.file && req.file.path,
     author: [req.session.user._id],
   }).then((createdRecipe) => {
     console.log("RECEIPE CREATED");
