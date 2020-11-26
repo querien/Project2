@@ -36,17 +36,25 @@ router.post("/recipe", uploader.single("imageUrl"), (req, res) => {
     servings: servings,
     images: req.file && req.file.path,
     author: [req.session.user._id],
-  }).then((createdRecipe) => {
-    console.log("RECEIPE CREATED");
-    User.findByIdAndUpdate(
-      req.session.user._id,
-      {
-        $addToSet: { recipes: createdRecipe._id },
-      },
-      { new: true }
-    ).then(() => {});
-    res.redirect(`/recipes/${createdRecipe._id}`);
-  });
+  })
+    .then((createdRecipe) => {
+      console.log("RECEIPE CREATED");
+      User.findByIdAndUpdate(
+        req.session.user._id,
+        {
+          $addToSet: { recipes: createdRecipe._id },
+        },
+        { new: true }
+      ).then(() => {});
+      res.redirect(`/recipes/${createdRecipe._id}`);
+    })
+    .catch((error) => {
+      if (error.code === 11000) {
+        return res.status(400).render("recipe-form", {
+          errorMessage: "Recipe names need to be unique! Please try again",
+        });
+      }
+    });
 });
 
 router.post("/delete-recipe/:id", (req, res) => {

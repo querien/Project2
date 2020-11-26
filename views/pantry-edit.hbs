@@ -13,18 +13,6 @@
   <label for="name">Ingredient name</label>
   <input type="text" name="name" value="{{ingredient.name}}">
 
-  <p>
-    <label>Availability</label>
-    <select name="availability" id="availability">
-      <option value="I always have this ingredient"
-        {{selected "I always have this ingredient" ingredient.availability}}>I always have this ingredient
-      </option>
-      <option value="I sometimes have this ingredient"
-        {{selected "I sometimes have this ingredient" ingredient.availability}}>I sometimes have this ingredient
-      </option>
-    </select>
-  </p>
-
   <label for="amount">Amount</label>
   <input type="number" min="1" name="amount" placeholder="Optional" value="{{ingredient.amount}}">
 

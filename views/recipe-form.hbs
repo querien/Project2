@@ -2,6 +2,11 @@
     <div class="recipe-title">
         <h1>Add your recipe</h1>
     </div>
+
+    {{#if errorMessage}}
+    <h4>{{this.errorMessage}}</h4>
+    {{/if}}
+
     <div class="recipe-form-content">
         <form action="/recipes/recipe" method="POST" enctype="multipart/form-data">
             <label for="title">Title:</label><br>
