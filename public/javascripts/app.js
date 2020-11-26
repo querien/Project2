@@ -19,7 +19,7 @@ if (searchForm !== undefined) {
       }
     });
   });
-});
+}
 
 function searchPantry() {
   // Declare variables
