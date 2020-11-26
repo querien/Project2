@@ -5,6 +5,7 @@ body {
   padding: 20px;
   font-family: "Roboto", sans-serif;
   color: #f8f6ea;
+  margin: 0 auto;
 }
 
 h1 {
@@ -332,7 +333,6 @@ option,
 input {
   margin: 10px;
   font-size: 18px;
-  font-weight: ;
 }
 
 .bottom-anchors {

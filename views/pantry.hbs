@@ -1,31 +1,32 @@
 <div class="pantrycontainer">
 
     <h1>My pantry</h1>
+    <div class="table-pantry">
+        <table class="pantry" style="width:100%">
+            <tr>
+                <th>Category</th>
+                <th>Ingredient</th>
+                <th>Amount</th>
+                <th>Remove</th>
+                <th>Edit</th>
+            </tr>
+            {{#each pantry}}
+            <tr>
+                <td>{{category}}</td>
+                <td>{{name}}</td>
+                <td>{{amount}}</td>
+                <td>
+                    <form action="/pantry/remove" method="POST">
+                        <button type="submit" name="removeIngredient" value={{_id}}>Remove</button>
+                </td>
+                <td>
+                    <a href="/pantry/edit/{{_id}}">Edit</a>
+                </td>
+            </tr>
+            {{/each}}
+        </table>
 
-    <table class="pantry" style="width:100%">
-        <tr>
-            <th>Category</th>
-            <th>Ingredient</th>
-            <th>Amount</th>
-            <th>Remove</th>
-            <th>Edit</th>
-        </tr>
-        {{#each pantry}}
-        <tr>
-            <td>{{category}}</td>
-            <td>{{name}}</td>
-            <td>{{amount}}</td>
-            <td>
-                <form action="/pantry/remove" method="POST">
-                    <button type="submit" name="removeIngredient" value={{_id}}>Remove</button>
-            </td>
-            <td>
-                <a href="/pantry/edit/{{_id}}">Edit</a>
-            </td>
-        </tr>
-        {{/each}}
-
-    </table>
+    </div>
 
 
     <a href="/pantry/add">Add customized ingredient!</a>
