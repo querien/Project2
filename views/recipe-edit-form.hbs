@@ -3,18 +3,19 @@
     <div class="recipe-form-content">
         <form action="/recipes/edit/{{recipe._id}}" method="POST">
             <label for="title">Title</label><br>
-            <input type="text" name="title" value="{{recipe.title}}"><br>
+            <input type="text" name="title" placeholder="*required" value="{{recipe.title}}"><br>
 
             <label for="description">Description:</label><br>
             <textarea name="description" id="description" cols="50" rows="4">{{recipe.description}}</textarea><br>
 
             <label for="ingredients">Please, fill in your ingredients separated by a comma:</label><br>
 
-            <textarea id="ingredients" name="ingredients" rows="4" cols="50">{{recipe.ingredients}}
+            <textarea id="ingredients" name="ingredients" placeholder="*required" rows="4" cols="50">{{recipe.ingredients}}
         </textarea><br>
 
             <label for="directions">Directions:</label><br>
-            <textarea name="directions" id="directions" cols="30" rows="10">{{recipe.directions}}</textarea><br>
+            <textarea name="directions" id="directions" placeholder="*required" cols="30"
+                rows="10">{{recipe.directions}}</textarea><br>
 
             <label for="duration">Duration</label><br>
             <input type="text" name="duration" id="duration" value="{{recipe.duration}}"><br>

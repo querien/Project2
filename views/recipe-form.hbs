@@ -5,7 +5,7 @@
     <div class="recipe-form-content">
         <form action="/recipes/recipe" method="POST" enctype="multipart/form-data">
             <label for="title">Title:</label><br>
-            <input type="text" name="title"><br>
+            <input type="text" name="title" placeholder="*required"><br>
 
 
             <label for="description">Description:</label><br>
@@ -13,11 +13,11 @@
 
             <label for="ingredients">Please, fill in your ingredients separated by a comma:</label><br>
 
-            <textarea id="ingredients" name="ingredients" rows="4" cols="50">
-        </textarea><br>
+            <textarea name="ingredients" id="ingredients" placeholder="*required" cols="50" rows="4">
+            </textarea><br>
 
             <label for="directions">Directions:</label><br>
-            <textarea name="directions" id="directions" cols="50" rows="4"></textarea><br>
+            <textarea name="directions" id="directions" placeholder="*required" cols="50" rows="4"></textarea><br>
 
             <label for="duration">Duration in minutes:</label><br>
             <input type="text" name="duration" id="duration"><br>
