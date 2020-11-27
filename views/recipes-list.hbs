@@ -1,13 +1,14 @@
 <div class="recipes-library">
     <div class="list-header">
         <h1>Recipes library</h1>
-        <form id="search-recipes" action="/recipes" autocomplete="off">
-            <input name="search" type="text" placeholder="Search recipes...">
-        </form>
+        <div class="add-recipe-list">
+            <a class="white-text" href="/recipes/new-recipe">Add a recipe</a>
+        </div>
     </div>
-    <div class="add-recipe-list">
-        <a href="/recipes/new-recipe">Add a recipe</a>
-    </div>
+
+    <form id="search-recipes" action="/recipes" autocomplete="off">
+        <input name="search" type="text" placeholder="Search recipes...">
+    </form>
     <ul class="recipes-list">
 
         {{#each recipes}}

@@ -20,9 +20,9 @@
         <p>{{upper recipe.directions}}</p>
     </div>
     <div class="action-buttons">
-        <a href="/shopping-list/{{recipe._id}}">Create your groceries list</a>
+        <a class="white-text" href="/shopping-list/{{recipe._id}}">Create your groceries list</a>
 
-        <a href="/recipes/edit-recipe/{{recipe._id}}">Edit your recipe</a>
+        <a class="white-text" href="/recipes/edit-recipe/{{recipe._id}}">Edit your recipe</a>
 
         <form action="/recipes/delete-recipe/{{recipe._id}}" method="POST">
             <button type="submit">Delete this recipe</button>
